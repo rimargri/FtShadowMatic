@@ -4,21 +4,20 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System;
 
-public class checkCorrectPuzzle : MonoBehaviour
+class CheckCorrectPuzzle : MonoBehaviour
 {
 	public GameObject finishLevelMenu;
 
-	public void LoadGameLevel(string SceneName)
-	{
-		SceneManager.LoadScene(SceneName);
-	}
+	// public void LoadGameLevel(string SceneName)
+	// {
+	// 	SceneManager.LoadScene(SceneName);
+	// }
 
 	bool checkingCoordinates(Vector3 eulerAngles, Vector3 rightRotation)
 	{
 		float x = Math.Abs(Math.Abs(eulerAngles.x) - Math.Abs(rightRotation.x));
 		float y = Math.Abs(Math.Abs(eulerAngles.y) - Math.Abs(rightRotation.y));
 		float z = Math.Abs(Math.Abs(eulerAngles.z) - Math.Abs(rightRotation.z));
-		// Debug.Log("MAth.Abs(): " + x + " " + y + " " + z);
 		if (x <= 10 && y <= 10 && z <= 10)
 		{
 			return true;
@@ -26,31 +25,30 @@ public class checkCorrectPuzzle : MonoBehaviour
 		return false;
 	}
 
-
 	bool CompareRotation(GameObject target)
 	{
 		Quaternion quaternionAngles = target.transform.rotation;
 		Vector3 eulerAngles = quaternionAngles.eulerAngles;
-		// Debug.Log(target.name + "Current rot: " + eulerAngles.x + " " + eulerAngles.y + " " + eulerAngles.z);
+		// Debug.Log("Current rot: " + eulerAngles.x + " " + eulerAngles.y + " " + eulerAngles.z);
 
 		var rot = target.GetComponent <CorrectRotation> ();
 		Vector3 rightRotation = rot.getRightRotation(target);
 
 		if (checkingCoordinates(eulerAngles, rightRotation))
 		{
-			Debug.Log("Checking coordinates was approved");
+			// Debug.Log("Checking coordinates was approved");
 			return true;
 		}
-		Debug.Log(target + "Final rot: " + rightRotation.x + " " + rightRotation.y + " " + rightRotation.z);
+		// Debug.Log("Needed rot: " + rightRotation.x + " " + rightRotation.y + " " + rightRotation.z);
 		return false;
 	}
 
 	void ShowLevelsWindow()
 	{
-			var GameObjLvlUnlock = GameObject.Find("Canvas/LvlManager");
-			var lvlUnlocker = GameObjLvlUnlock.GetComponent <LvlManager> ();
-			lvlUnlocker.SetLevelUnlocked();
-			finishLevelMenu.SetActive(true);
+		var GameObjLvlUnlock = GameObject.Find("Canvas/LvlManager");
+		var lvlUnlocker = GameObjLvlUnlock.GetComponent <LvlManager> ();
+		lvlUnlocker.SetLevelUnlocked();
+		finishLevelMenu.SetActive(true);
 	}
 
     void Update()
