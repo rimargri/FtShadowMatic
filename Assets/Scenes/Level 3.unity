@@ -2042,7 +2042,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 857ff35eb1a225449aa348d9b1d20e06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  finishLevelMenu: {fileID: 1662272853}
+  Panel: {fileID: 1662272853}
 --- !u!23 &945851909873195904
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6172,7 +6172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 857ff35eb1a225449aa348d9b1d20e06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  finishLevelMenu: {fileID: 1662272853}
+  Panel: {fileID: 0}
 --- !u!222 &6496328138115759931
 CanvasRenderer:
   m_ObjectHideFlags: 0

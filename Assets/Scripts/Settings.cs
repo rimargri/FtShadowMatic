@@ -22,3 +22,4 @@ public class Settings : MonoBehaviour
 		QualitySettings.SetQualityLevel(index);
 	}
 }
+

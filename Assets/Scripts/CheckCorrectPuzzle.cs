@@ -6,7 +6,7 @@ using System;
 
 class CheckCorrectPuzzle : MonoBehaviour
 {
-	public GameObject finishLevelMenu;
+	public GameObject Panel;
 
 	// public void LoadGameLevel(string SceneName)
 	// {
@@ -48,7 +48,8 @@ class CheckCorrectPuzzle : MonoBehaviour
 		var GameObjLvlUnlock = GameObject.Find("Canvas/LvlManager");
 		var lvlUnlocker = GameObjLvlUnlock.GetComponent <LvlManager> ();
 		lvlUnlocker.SetLevelUnlocked();
-		finishLevelMenu.SetActive(true);
+		lvlUnlocker.UpdateSelectionLevels();
+		Panel.SetActive(true);
 	}
 
     void Update()
@@ -64,6 +65,7 @@ class CheckCorrectPuzzle : MonoBehaviour
 		}
 		if ((target.name == "4" || target.name == "tea_pot") && CompareRotation(target))
 		{
+			Debug.Log("I am right here");
 			ShowLevelsWindow();
 		}
 		if (SceneManager.GetActiveScene().name == "Level 3")

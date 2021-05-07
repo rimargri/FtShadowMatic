@@ -6155,7 +6155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 857ff35eb1a225449aa348d9b1d20e06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  finishLevelMenu: {fileID: 1662272853}
+  Panel: {fileID: 1662272853}
 --- !u!54 &6891534939086579562
 Rigidbody:
   m_ObjectHideFlags: 0
