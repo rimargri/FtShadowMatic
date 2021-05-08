@@ -11,20 +11,8 @@ public class LvlManager : MonoBehaviour
 
 	void Start()
 	{
-		int i;
-
-		levelsUnlocked = PlayerPrefs.GetInt("levelsUnlocked", 1);
-		Debug.Log("levelsUnlocked" + levelsUnlocked);
-		
-		for (i = 0; i < buttons.Length; i++)
-		{
-			buttons[i].interactable = false;
-		}
-
-		for (i = 0; i < levelsUnlocked; i++)
-		{
-			buttons[i].interactable = true;
-		}
+		Debug.Log("Start LvlManager");
+		UpdateSelectionLevels();
 	}
 
 	public void UpdateSelectionLevels()
@@ -32,16 +20,25 @@ public class LvlManager : MonoBehaviour
 		int i;
 
 		levelsUnlocked = PlayerPrefs.GetInt("levelsUnlocked", 1);
-		Debug.Log("levelsUnlocked" + levelsUnlocked);
-		
-		for (i = 0; i < buttons.Length; i++)
+		string mode = PlayerPrefs.GetString("Mode");
+		Debug.Log("Mode  UpdateSelectionLevels" + mode);
+		if (mode == "TestMode")
 		{
-			buttons[i].interactable = false;
+			for (i = 0; i < buttons.Length; i++)
+			{
+				buttons[i].interactable = true;
+			}
 		}
-
-		for (i = 0; i < levelsUnlocked; i++)
+		else if (mode == "NormalMode")
 		{
-			buttons[i].interactable = true;
+			for (i = 0; i < buttons.Length; i++)
+			{
+				buttons[i].interactable = false;
+			}
+			for (i = 0; i < levelsUnlocked; i++)
+			{
+				buttons[i].interactable = true;
+			}
 		}
 	}
 
@@ -55,10 +52,5 @@ public class LvlManager : MonoBehaviour
 			PlayerPrefs.Save();
 		}
 		UpdateSelectionLevels();
-	}
-
-	public void LoadLevel(int levelIndex)
-	{		
-		SceneManager.LoadScene(levelIndex);
 	}
 }

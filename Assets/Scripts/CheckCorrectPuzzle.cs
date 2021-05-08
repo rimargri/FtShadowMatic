@@ -65,7 +65,6 @@ class CheckCorrectPuzzle : MonoBehaviour
 		}
 		if ((target.name == "4" || target.name == "tea_pot") && CompareRotation(target))
 		{
-			Debug.Log("I am right here");
 			ShowLevelsWindow();
 		}
 		if (SceneManager.GetActiveScene().name == "Level 3")

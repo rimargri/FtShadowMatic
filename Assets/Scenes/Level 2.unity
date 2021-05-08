@@ -187,8 +187,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 723807051}
-        m_TargetAssemblyTypeName: LvlManager, Assembly-CSharp
+      - m_Target: {fileID: 167950692}
+        m_TargetAssemblyTypeName: LevelUnlocker, Assembly-CSharp
         m_MethodName: LoadLevel
         m_Mode: 3
         m_Arguments:
@@ -238,7 +238,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 167950689}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f3e73dfc12bf674ab31a5759fd8d9a6, type: 3}
+  m_Script: {fileID: 11500000, guid: b59683865733dd343b6ef1832d26b9ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!222 &167950693
@@ -701,8 +701,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 723807051}
-        m_TargetAssemblyTypeName: LvlManager, Assembly-CSharp
+      - m_Target: {fileID: 804257186}
+        m_TargetAssemblyTypeName: LevelUnlocker, Assembly-CSharp
         m_MethodName: LoadLevel
         m_Mode: 3
         m_Arguments:
@@ -752,7 +752,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 804257183}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f3e73dfc12bf674ab31a5759fd8d9a6, type: 3}
+  m_Script: {fileID: 11500000, guid: b59683865733dd343b6ef1832d26b9ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!222 &804257187
@@ -1583,7 +1583,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1457691634}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f3e73dfc12bf674ab31a5759fd8d9a6, type: 3}
+  m_Script: {fileID: 11500000, guid: b59683865733dd343b6ef1832d26b9ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1457691637
@@ -1630,8 +1630,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 723807051}
-        m_TargetAssemblyTypeName: LvlManager, Assembly-CSharp
+      - m_Target: {fileID: 1457691636}
+        m_TargetAssemblyTypeName: LevelUnlocker, Assembly-CSharp
         m_MethodName: LoadLevel
         m_Mode: 3
         m_Arguments:
@@ -7382,7 +7382,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &7573628625557988224
 MonoBehaviour:
   m_ObjectHideFlags: 0
