@@ -37,15 +37,16 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\Rotator.cs" />
+     <Compile Include="Assets\Scripts\ClearLevelMenu.cs" />
      <Compile Include="Assets\Scripts\CheckCorrectPuzzle.cs" />
+     <Compile Include="Assets\Scripts\LevelUnlocker.cs" />
      <Compile Include="Assets\Scripts\ExitEsc.cs" />
      <Compile Include="Assets\Scripts\MainMenuController.cs" />
      <Compile Include="Assets\Scripts\LvlManager.cs" />
      <Compile Include="Assets\Scripts\CorrectRotation.cs" />
      <Compile Include="Assets\Scripts\Settings.cs" />
-     <Compile Include="Assets\Scripts\ClearLevelMenu.cs" />
      <Compile Include="Assets\Scripts\CheckMode.cs" />
-     <Compile Include="Assets\Scripts\LevelUnlocker.cs" />
+     <Compile Include="Assets\Scripts\RaycastObject.cs" />
     <Reference Include="UnityEngine">
         <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.0f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

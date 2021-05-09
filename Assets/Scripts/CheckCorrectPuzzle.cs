@@ -31,7 +31,12 @@ class CheckCorrectPuzzle : MonoBehaviour
 		Vector3 eulerAngles = quaternionAngles.eulerAngles;
 		// Debug.Log("Current rot: " + eulerAngles.x + " " + eulerAngles.y + " " + eulerAngles.z);
 
+		Debug.Log("check 2 " + target);
 		var rot = target.GetComponent <CorrectRotation> ();
+		if (!rot)
+		{
+			return false;
+		}
 		Vector3 rightRotation = rot.getRightRotation(target);
 
 		if (checkingCoordinates(eulerAngles, rightRotation))
@@ -54,7 +59,9 @@ class CheckCorrectPuzzle : MonoBehaviour
 
     void Update()
     {
+		Debug.Log("check 1");
 		GameObject target = GameObject.Find("Floor");
+		GameObject target2 = GameObject.Find("Floor");
 		if (SceneManager.GetActiveScene().name == "Level 1")
 		{
 			target = GameObject.Find("42/4");
@@ -69,8 +76,15 @@ class CheckCorrectPuzzle : MonoBehaviour
 		}
 		if (SceneManager.GetActiveScene().name == "Level 3")
 		{
-			target = GameObject.Find("Globe/globe-earth");
-			var target2 = GameObject.Find("Globe/globe-base");
+			Debug.Log(PlayerPrefs.GetString("globe"));
+			if (PlayerPrefs.GetString("globe") == "earth")
+			{
+				target = GameObject.Find("Globe/globe-earth");
+			}
+			if (PlayerPrefs.GetString("globe") == "base")
+			{
+				target2 = GameObject.Find("Globe/globe-base");
+			}
 			if (CompareRotation(target) && (CompareRotation(target2)))
 			{
 				ShowLevelsWindow();
