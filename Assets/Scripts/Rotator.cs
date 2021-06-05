@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-public
- class Rotator : MonoBehaviour
+public class Rotator : MonoBehaviour
 {
 
 	public float speedH = 1000.0f;
@@ -33,14 +32,24 @@ public
 
 	void rotationLevel3()
 	{
-		if (Input.GetKey(KeyCode.Space) && (Input.GetKey(KeyCode.Mouse0)) && Input.GetKey(KeyCode.M)) {
-			transform.Translate(Vector3.forward * speedMovement * Time.deltaTime, Space.Self);			
+		bool f = false;
+		var obj = GameObject.Find("Walls");
+		if (PlayerPrefs.GetString("globe") == "base") {
+			obj = GameObject.Find("Globe/globe-base"); 
+			f = true;
 		}
-		else if (Input.GetKey(KeyCode.Space) && (Input.GetKey(KeyCode.Mouse0))) {
-			transform.Rotate(0.0f, Input.GetAxis("Mouse Y") * speedV * Time.deltaTime, 0.0f, Space.Self);
+		if (PlayerPrefs.GetString("globe") == "earth") {
+			obj = GameObject.Find("Globe/globe-earth"); 
+			f = true;
 		}
-		else if ((Input.GetKey(KeyCode.Mouse0))) {
-			transform.Rotate(Input.GetAxis("Mouse X") * speedH * Time.deltaTime, 0.0f, 0.0f, Space.Self);
+		if (f && Input.GetKey(KeyCode.Space) && (Input.GetKey(KeyCode.Mouse0)) && Input.GetKey(KeyCode.M)) {
+			obj.transform.Translate(Vector3.forward * speedMovement * Time.deltaTime, Space.Self);			
+		}
+		else if (f && Input.GetKey(KeyCode.Space) && (Input.GetKey(KeyCode.Mouse0))) {
+			obj.transform.Rotate(0.0f, Input.GetAxis("Mouse Y") * speedV * Time.deltaTime, 0.0f, Space.Self);
+		}
+		else if (f && (Input.GetKey(KeyCode.Mouse0))) {
+			obj.transform.Rotate(Input.GetAxis("Mouse X") * speedH * Time.deltaTime, 0.0f, 0.0f, Space.Self);
 		}
 	}
 

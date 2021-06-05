@@ -3,20 +3,24 @@ using UnityEngine.UI;
 
 public class RaycastObject : MonoBehaviour
 {
+
+	// public void Start()
+	// {
+
+	// }
+
 	public void Update()
 	{
-		Debug.Log("check 3");
 		if (Input.GetMouseButtonDown(0))
 		{
 			Debug.Log("Mouse is down");
-			RaycastHit hitInfo = new RaycastHit();
-			bool hit = Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitInfo);
+			bool hit = Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out var hitInfo);
 			if (hit) 
 			{
-				Debug.Log("Hit " + hitInfo.transform.gameObject.name);
+				// Debug.Log($"Hit {hitInfo.transform.gameObject.name} [{hitInfo.transform.gameObject.GetInstanceId()}]");
 				if (hitInfo.transform.gameObject.name == "globe-base")
 				{
-				    Debug.Log ("globe-base was found");
+				    Debug.Log("globe-base was found");
 					PlayerPrefs.SetString("globe", "base");
 					PlayerPrefs.Save();
 				}
