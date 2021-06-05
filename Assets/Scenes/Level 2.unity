@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.49641287, b: 0.5748173, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -312,6 +312,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -407,6 +408,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -1389,6 +1391,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -5971,7 +5974,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 221bd7f60003e8345bfc6136905bdaca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rightRotation: {x: 0, y: 0, z: 0}
+  Euler: {x: 13.41894, y: 0.850712, z: 354}
 --- !u!114 &5936682557575744739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5987,6 +5990,7 @@ MonoBehaviour:
   speedH: 1000
   speedV: 1000
   speedMovement: 20
+  Raycaster: {fileID: 0}
 --- !u!114 &5936682557575744740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9868,6 +9872,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
