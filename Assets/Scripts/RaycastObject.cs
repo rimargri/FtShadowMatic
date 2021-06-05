@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class RaycastObject : MonoBehaviour
 {
-
+	public GameObject Selected;
 	// public void Start()
 	// {
 
@@ -18,18 +18,24 @@ public class RaycastObject : MonoBehaviour
 			if (hit) 
 			{
 				// Debug.Log($"Hit {hitInfo.transform.gameObject.name} [{hitInfo.transform.gameObject.GetInstanceId()}]");
-				if (hitInfo.transform.gameObject.name == "globe-base")
-				{
-				    Debug.Log("globe-base was found");
-					PlayerPrefs.SetString("globe", "base");
-					PlayerPrefs.Save();
-				}
-				if (hitInfo.transform.gameObject.name == "globe-earth")
-				{
-					Debug.Log("globe-earth was found");
-					PlayerPrefs.SetString("globe", "earth");
-					PlayerPrefs.Save();
-				}
+
+
+				// if (hitInfo.transform.gameObject.name == "globe-base")
+				// {
+				//     Debug.Log("globe-base was found");
+				// 	PlayerPrefs.SetString("globe", "base");
+				// 	PlayerPrefs.Save();
+				// }
+				// if (hitInfo.transform.gameObject.name == "globe-earth")
+				// {
+				// 	Debug.Log("globe-earth was found");
+				// 	PlayerPrefs.SetString("globe", "earth");
+				// 	PlayerPrefs.Save();
+				// }
+				if (hitInfo.transform.tag == "Rotatetable")
+					Selected = hitInfo.transform.gameObject;
+
+
 				// else {
 				//     Debug.Log ("Nothing");
 				// }

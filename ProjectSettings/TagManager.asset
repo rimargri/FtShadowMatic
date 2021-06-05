@@ -6,6 +6,7 @@ TagManager:
   tags:
   - globe-base
   - globe-earth
+  - Rotatetable
   layers:
   - Default
   - TransparentFX
