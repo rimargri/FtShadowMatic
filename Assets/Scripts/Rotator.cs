@@ -39,25 +39,6 @@ public class Rotator : MonoBehaviour
 
 	void rotationLevel3()
 	{
-		// bool objectSelected = false;
-		// var obj = GameObject.Find("Walls");
-		// if (PlayerPrefs.GetString("globe") == "base") {
-		// 	obj = GameObject.Find("Globe/globe-base"); 
-		// 	objectSelected = true;
-		// }
-		// if (PlayerPrefs.GetString("globe") == "earth") {
-		// 	obj = GameObject.Find("Globe/globe-earth"); 
-		// 	objectSelected = true;
-		// }
-		// if (objectSelected && Input.GetKey(KeyCode.Space) && (Input.GetKey(KeyCode.Mouse0)) && Input.GetKey(KeyCode.M)) {
-		// 	obj.transform.Translate(Vector3.forward * speedMovement * Time.deltaTime, Space.Self);			
-		// }
-		// else if (objectSelected && Input.GetKey(KeyCode.Space) && (Input.GetKey(KeyCode.Mouse0))) {
-		// 	obj.transform.Rotate(0.0f, Input.GetAxis("Mouse Y") * speedV * Time.deltaTime, 0.0f, Space.Self);
-		// }
-		// else if (objectSelected && (Input.GetKey(KeyCode.Mouse0))) {
-		// 	obj.transform.Rotate(Input.GetAxis("Mouse X") * speedH * Time.deltaTime, 0.0f, 0.0f, Space.Self);
-		// }
 		if (Raycaster.Selected == null) return;
 		if (Input.GetKey(KeyCode.Space) && (Input.GetKey(KeyCode.Mouse0)) && Input.GetKey(KeyCode.M)) {
 			Raycaster.Selected.transform.Translate(Vector3.forward * speedMovement * Time.deltaTime, Space.Self);			

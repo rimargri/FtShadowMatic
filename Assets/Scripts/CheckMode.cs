@@ -7,6 +7,5 @@ class CheckMode : MonoBehaviour
 	{
 		PlayerPrefs.SetString("Mode", objButton.name);
 		PlayerPrefs.Save();
-		Debug.Log("ClickButton ::: Mode     " + objButton.name);
 	}
 }
