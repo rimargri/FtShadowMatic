@@ -24,17 +24,17 @@ public class Rotator : MonoBehaviour
 
 	void rotationLevel2()
 	{
-		// if (Input.GetKey(KeyCode.Space) && (Input.GetKey(KeyCode.Mouse0))) {
-		// 	transform.Rotate(0.0f, Input.GetAxis("Mouse Y") * speedV * Time.deltaTime, 0.0f, Space.Self);
-		// }
-		// else if ((Input.GetKey(KeyCode.Mouse0))) {
-		// 	transform.Rotate(Input.GetAxis("Mouse X") * speedH * Time.deltaTime, 0.0f, 0.0f, Space.Self);
-		// }
+		if (Input.GetKey(KeyCode.Space) && (Input.GetKey(KeyCode.Mouse0))) {
+			transform.Rotate(0.0f, Input.GetAxis("Mouse Y") * speedV * Time.deltaTime, 0.0f, Space.Self);
+		}
+		else if ((Input.GetKey(KeyCode.Mouse0))) {
+			transform.Rotate(Input.GetAxis("Mouse X") * speedH * Time.deltaTime, 0.0f, 0.0f, Space.Self);
+		}
 		
 		// if (Input.GetKey(KeyCode.Space) && (Input.GetKey(KeyCode.Mouse0))) {
-		if (Input.GetKey(KeyCode.Space) && Input.GetKey(KeyCode.Mouse0)) {
-			transform.Rotate(Input.GetAxis("Mouse X") * speedH * Time.deltaTime, Input.GetAxis("Mouse Y") * speedV * Time.deltaTime, 0.0f, Space.Self);
-		}
+		// if (Input.GetKey(KeyCode.Space) && Input.GetKey(KeyCode.Mouse0)) {
+		// 	transform.Rotate(Input.GetAxis("Mouse X") * speedH * Time.deltaTime, Input.GetAxis("Mouse Y") * speedV * Time.deltaTime, 0.0f, Space.Self);
+		// }
 	}
 
 	void rotationLevel3()

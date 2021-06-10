@@ -4,10 +4,6 @@ using UnityEngine.UI;
 public class RaycastObject : MonoBehaviour
 {
 	public GameObject Selected;
-	// public void Start()
-	// {
-
-	// }
 
 	public void Update()
 	{

@@ -4,7 +4,6 @@ public class CorrectRotation : MonoBehaviour
 {
 	public Vector3 Euler;
 	public Quaternion Rotation => Quaternion.Euler(Euler);
-	// public Vector3 rightRotation;
 
 	void Start()
 	{

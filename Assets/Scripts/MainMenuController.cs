@@ -5,18 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuController : MonoBehaviour
 {
-	public void NextLevelPressed()
+	public void MainMenuLoad()
 	{
-		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+		SceneManager.LoadScene("Menu");
 	}
-
-	// public void ContinuePlayPressed()
-	// {
-	// 	var pauseMenu = GameObject.Find("Canvas/Pause Menu/Menu");
-	// 	pauseMenu.SetActive(false);
-	// 	var pauseButton = GameObject.Find("Canvas/Pause Menu/ButtonPause");
-	// 	pauseButton.SetActive(true);
-	// }
 
 	public void ExitPressed()
 	{
