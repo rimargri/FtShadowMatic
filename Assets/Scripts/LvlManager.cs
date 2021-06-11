@@ -51,6 +51,8 @@ public class LvlManager : MonoBehaviour
 	public void SetLevelUnlocked()
 	{
 		int currentLevel = SceneManager.GetActiveScene().buildIndex + 1;
+		if (currentLevel >= 4)
+			return ;
 		if (currentLevel >= PlayerPrefs.GetInt("levelsUnlocked"))
 		{
 			PlayerPrefs.SetInt("levelsUnlocked", currentLevel);

@@ -38,7 +38,8 @@ class CheckCorrectPuzzle : MonoBehaviour
 		if (!isComplete && targets.TrueForAll((target) => IsRotationCorrect(target)))
 		{
 			isComplete = true;
-			if (SceneManager.GetActiveScene().buildIndex != 3) {
+			if ((SceneManager.GetActiveScene().buildIndex < 3 && PlayerPrefs.GetString("Mode") == "NormalMode") || (PlayerPrefs.GetString("Mode") == "TestMode")) {
+			// if ((SceneManager.GetActiveScene().buildIndex < 3)) {
 				ShowLevelsWindow();
 			}
 			else 
