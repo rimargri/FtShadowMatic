@@ -18,8 +18,14 @@ class CheckCorrectPuzzle : MonoBehaviour
 
 		float angle = Quaternion.Angle(targetRotation, correctRotation);
 		// Debug.Log(angle);
-		return (angle <= 25f);
+		return (angle <= 15f);
 	}
+
+// -1708.5
+
+// -924.9
+
+// 487.5
 
 	void ShowLevelsWindow()
 	{
@@ -38,8 +44,8 @@ class CheckCorrectPuzzle : MonoBehaviour
 		if (!isComplete && targets.TrueForAll((target) => IsRotationCorrect(target)))
 		{
 			isComplete = true;
-			if ((SceneManager.GetActiveScene().buildIndex < 3 && PlayerPrefs.GetString("Mode") == "NormalMode") || (PlayerPrefs.GetString("Mode") == "TestMode")) {
-			// if ((SceneManager.GetActiveScene().buildIndex < 3)) {
+			if ((SceneManager.GetActiveScene().buildIndex < 3 && PlayerPrefs.GetString("Mode") == "NormalMode") || (PlayerPrefs.GetString("Mode") == "TestMode"))
+			{
 				ShowLevelsWindow();
 			}
 			else 
