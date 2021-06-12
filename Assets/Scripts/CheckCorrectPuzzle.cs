@@ -8,7 +8,7 @@ class CheckCorrectPuzzle : MonoBehaviour
 {
 	public GameObject LevelChoiceWindow;
 	public GameObject ButtonPause;
-
+	public GameObject Definitions;
 	private bool isComplete = false;
 
 	bool IsRotationCorrect(CorrectRotation target)
@@ -17,15 +17,8 @@ class CheckCorrectPuzzle : MonoBehaviour
 		Quaternion correctRotation = target.GetCorrectRotation(target.gameObject);
 
 		float angle = Quaternion.Angle(targetRotation, correctRotation);
-		// Debug.Log(angle);
 		return (angle <= 15f);
 	}
-
-// -1708.5
-
-// -924.9
-
-// 487.5
 
 	void ShowLevelsWindow()
 	{
@@ -34,6 +27,7 @@ class CheckCorrectPuzzle : MonoBehaviour
 		lvlUnlocker.SetLevelUnlocked();
 		LevelChoiceWindow.SetActive(true);
 		ButtonPause.SetActive(false);
+		Definitions.SetActive(false);
 	}
 
     void Update()

@@ -2,86 +2,63 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class Rotator : MonoBehaviour
 {
-
 	public float speedH = 1000.0f;
 	public float speedV = 1000.0f;
 	public float speedMovement = 20.0f;
-
 	public RaycastObject Raycaster;
-
-
-	// private void Start()
-	// {
-	// 	Cursor.lockState = CursorLockMode.Locked;
-	// }
 
 	void rotationLevel1()
 	{
+		if (Raycaster.Selected == null) return;
+		var obj = Raycaster.Selected.transform;
 		if ((Input.GetKey(KeyCode.Mouse0))) {
-			transform.Rotate(Input.GetAxis("Mouse X") * speedH * Time.deltaTime * (-1), 0.0f, 0.0f, Space.Self);
+			obj.Rotate(Input.GetAxis("Mouse X") * speedH * Time.deltaTime * (-1), 0.0f, 0.0f, Space.Self);
 		}
 	}
 
 	void rotationLevel2()
 	{
+		if (Raycaster.Selected == null) return;
+		var obj = Raycaster.Selected.transform;
 		if (Input.GetKey(KeyCode.Mouse0) && !(Input.GetKey(KeyCode.Space))) {
-			transform.Rotate(Input.GetAxis("Mouse X") * speedH * Time.deltaTime * (-1), 0.0f, 0.0f, Space.Self);
+			obj.Rotate(Input.GetAxis("Mouse X") * speedH * Time.deltaTime * (-1), 0.0f, 0.0f, Space.Self);
 		}
 		if (Input.GetKey(KeyCode.Space) && Input.GetKey(KeyCode.Mouse0)) {
-			transform.Rotate(0.0f, Input.GetAxis("Mouse Y") * speedV * Time.deltaTime * (-1), 0.0f, Space.Self);
+			obj.Rotate(0.0f, Input.GetAxis("Mouse Y") * speedV * Time.deltaTime, 0.0f, Space.Self);
 		}
-		
-		// if (Input.GetKey(KeyCode.Space) && Input.GetKey(KeyCode.Mouse0))
-		// {
-		// 	transform.Rotate(Input.GetAxis("Mouse X") * speedH * Time.deltaTime * (-1), Input.GetAxis("Mouse Y") * speedV * Time.deltaTime, 0.0f, Space.Self);
-		// }
 	}
 
 	void rotationLevel3()
 	{
 		if (Raycaster.Selected == null) return;
-		if (Input.GetKey(KeyCode.Mouse0) && !(Input.GetKey(KeyCode.Space))) {
-			Raycaster.Selected.transform.Rotate(Input.GetAxis("Mouse X") * speedH * Time.deltaTime, 0.0f, 0.0f, Space.Self);
+		var obj = Raycaster.Selected.transform;
+		if (Input.GetKey(KeyCode.Mouse0) && !(Input.GetKey(KeyCode.LeftControl))) {
+			obj.Rotate(Input.GetAxis("Mouse X") * speedH * Time.deltaTime, 0.0f, 0.0f, Space.Self);
 		}
-		if (Input.GetKey(KeyCode.Space) && Input.GetKey(KeyCode.Mouse0)) {
-			Raycaster.Selected.transform.Rotate(0.0f, Input.GetAxis("Mouse Y") * speedV * Time.deltaTime * (-1), 0.0f, Space.Self);
+		if (Input.GetKey(KeyCode.LeftControl) && Input.GetKey(KeyCode.Mouse0)) {
+			obj.Rotate(0.0f, Input.GetAxis("Mouse Y") * speedV * Time.deltaTime * (-1), 0.0f, Space.Self);
 		}
-		if (Input.GetKey(KeyCode.Space) && Input.GetKey(KeyCode.Mouse0) && Input.GetKey(KeyCode.M)) {
-			Raycaster.Selected.transform.Translate(Vector3.forward * speedMovement * Time.deltaTime, Space.Self);			
+		
+	
+		if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.Mouse0)) {
+			obj.Translate(new Vector3 (0f, 0f, -10f) * Time.deltaTime, Space.World);
 		}
-
-
-		// if (Input.GetKey(KeyCode.Space) && (Input.GetKey(KeyCode.Mouse0)) && Input.GetKey(KeyCode.M)) {
-		// 	Raycaster.Selected.transform.Translate(Vector3.forward * speedMovement * Time.deltaTime, Space.Self);			
-		// }
-		// else if (Input.GetKey(KeyCode.Space) && (Input.GetKey(KeyCode.Mouse0))) {
-		// 	Raycaster.Selected.transform.Rotate(0.0f, Input.GetAxis("Mouse Y") * speedV * Time.deltaTime  * (-1), 0.0f, Space.Self);
-		// }
-		// else if ((Input.GetKey(KeyCode.Mouse0))) {
-		// 	Raycaster.Selected.transform.Rotate(Input.GetAxis("Mouse X") * speedH * Time.deltaTime, 0.0f, 0.0f, Space.Self);
-		// }
+		else if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.Mouse0)) {
+			obj.Translate(new Vector3 (0f, 0f, 10f) * Time.deltaTime, Space.World);
+		}
+		else if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.Mouse0)) {
+			obj.Translate(new Vector3 (-10f, 0f, 0f) * Time.deltaTime, Space.World);
+		}
+		else if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.Mouse0)) {
+			obj.Translate(new Vector3 (10f, 0f, 0f) * Time.deltaTime, Space.World);
+		}
 	}
-
-// 57.57
-
-// -647.535
-
-// 423.572
-
-
-
-// 48.749
-
-// -636.747
-
-// 430.827
-
-
 
 	void Update()
 	{
 		var pauseMenu = GameObject.Find("Canvas/PauseMenu/Panel");
-		if (!(pauseMenu.activeSelf)) {
+		var lvlWindow = GameObject.Find("Canvas/LvlManager/Panel");
+		if (!(pauseMenu.activeSelf) && !(lvlWindow.activeSelf)) {
 			if (SceneManager.GetActiveScene().name == "Level 1") {
 				rotationLevel1();
 			}
