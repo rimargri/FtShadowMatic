@@ -6,6 +6,11 @@ public class Rotator : MonoBehaviour
 	public float speedV = 1000.0f;
 	public float speedMovement = 20.0f;
 	public RaycastObject Raycaster;
+	Vector3 targetPosition;
+
+	public void Start() {
+		targetPosition = transform.position;
+	}
 
 	void rotationLevel1()
 	{
@@ -52,6 +57,18 @@ public class Rotator : MonoBehaviour
 		else if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.Mouse0)) {
 			obj.Translate(new Vector3 (10f, 0f, 0f) * Time.deltaTime, Space.World);
 		}
+
+	 
+		// if (Input.GetMouseButtonDown(0)) {
+		// // if (Input.GetKey(KeyCode.Mouse0)) {
+		// 	Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+		// 	RaycastHit hit;
+
+		// 	if (Physics.Raycast(ray, out hit)) {
+		// 		targetPosition = hit.point;
+		// 		obj.transform.position = targetPosition;
+		// 	}
+		// }
 	}
 
 	void Update()
