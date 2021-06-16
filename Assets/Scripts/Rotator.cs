@@ -7,6 +7,8 @@ public class Rotator : MonoBehaviour
 	public float speedMovement = 20.0f;
 	public RaycastObject Raycaster;
 	Vector3 targetPosition;
+	// private float coefficient = 0.03f;
+	private float coefficient = 0.5f;
 
 	public void Start() {
 		targetPosition = transform.position;
@@ -17,7 +19,7 @@ public class Rotator : MonoBehaviour
 		if (Raycaster.Selected == null) return;
 		var obj = Raycaster.Selected.transform;
 		if ((Input.GetKey(KeyCode.Mouse0))) {
-			obj.Rotate(Input.GetAxis("Mouse X") * speedH * Time.deltaTime * (-1), 0.0f, 0.0f, Space.Self);
+			obj.Rotate(Input.GetAxis("Mouse X") * speedH * Time.deltaTime * coefficient, 0.0f, 0.0f, Space.World);
 		}
 	}
 
@@ -25,11 +27,12 @@ public class Rotator : MonoBehaviour
 	{
 		if (Raycaster.Selected == null) return;
 		var obj = Raycaster.Selected.transform;
-		if (Input.GetKey(KeyCode.Mouse0) && !(Input.GetKey(KeyCode.Space))) {
-			obj.Rotate(Input.GetAxis("Mouse X") * speedH * Time.deltaTime * (-1), 0.0f, 0.0f, Space.Self);
+		// if (Input.GetKey(KeyCode.Mouse0) && (!(Input.GetKey(KeyCode.LeftControl) || !(Input.GetKey(KeyCode.RightControl))))) {
+		if (Input.GetKey(KeyCode.Mouse0)) {
+			obj.Rotate(Input.GetAxis("Mouse X") * speedH * Time.deltaTime * coefficient, 0.0f, 0.0f, Space.World);
 		}
-		if (Input.GetKey(KeyCode.Space) && Input.GetKey(KeyCode.Mouse0)) {
-			obj.Rotate(0.0f, Input.GetAxis("Mouse Y") * speedV * Time.deltaTime, 0.0f, Space.Self);
+		if ((Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl)) && Input.GetKey(KeyCode.Mouse0)) {
+			obj.Rotate(0.0f, Input.GetAxis("Mouse Y") * speedV * Time.deltaTime * coefficient * (-1), 0.0f, Space.World);
 		}
 	}
 
@@ -37,24 +40,25 @@ public class Rotator : MonoBehaviour
 	{
 		if (Raycaster.Selected == null) return;
 		var obj = Raycaster.Selected.transform;
-		if (Input.GetKey(KeyCode.Mouse0) && !(Input.GetKey(KeyCode.LeftControl))) {
-			obj.Rotate(Input.GetAxis("Mouse X") * speedH * Time.deltaTime, 0.0f, 0.0f, Space.Self);
+		// if (Input.GetKey(KeyCode.Mouse0) && (!(Input.GetKey(KeyCode.LeftControl) && !(Input.GetKey(KeyCode.RightControl))))) {
+		if (Input.GetKey(KeyCode.Mouse0)) {
+			obj.Rotate(Input.GetAxis("Mouse X") * speedH * Time.deltaTime * coefficient, 0.0f, 0.0f, Space.Self);
 		}
-		if (Input.GetKey(KeyCode.LeftControl) && Input.GetKey(KeyCode.Mouse0)) {
-			obj.Rotate(0.0f, Input.GetAxis("Mouse Y") * speedV * Time.deltaTime * (-1), 0.0f, Space.Self);
+		if (((Input.GetKey(KeyCode.LeftControl)) || (Input.GetKey(KeyCode.RightControl))) && Input.GetKey(KeyCode.Mouse0)) {
+			obj.Rotate(0.0f, Input.GetAxis("Mouse Y") * speedV * Time.deltaTime * (-1) * coefficient, 0.0f, Space.Self);
 		}
 		
 	
-		if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.Mouse0)) {
+		if ((Input.GetKey((KeyCode.LeftArrow)) || (Input.GetKey(KeyCode.A))) && Input.GetKey(KeyCode.Mouse0)) {
 			obj.Translate(new Vector3 (0f, 0f, -10f) * Time.deltaTime, Space.World);
 		}
-		else if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.Mouse0)) {
+		else if ((Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)) && Input.GetKey(KeyCode.Mouse0)) {
 			obj.Translate(new Vector3 (0f, 0f, 10f) * Time.deltaTime, Space.World);
 		}
-		else if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.Mouse0)) {
+		else if ((Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W)) && Input.GetKey(KeyCode.Mouse0)) {
 			obj.Translate(new Vector3 (-10f, 0f, 0f) * Time.deltaTime, Space.World);
 		}
-		else if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.Mouse0)) {
+		else if ((Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S)) && Input.GetKey(KeyCode.Mouse0)) {
 			obj.Translate(new Vector3 (10f, 0f, 0f) * Time.deltaTime, Space.World);
 		}
 

@@ -11,6 +11,7 @@ class CheckCorrectPuzzle : MonoBehaviour
 	public GameObject Definitions;
 	private bool isComplete = false;
 
+
 	bool IsRotationCorrect(CorrectRotation target)
 	{
 		Quaternion targetRotation = target.transform.rotation;
@@ -19,6 +20,11 @@ class CheckCorrectPuzzle : MonoBehaviour
 		float angle = Quaternion.Angle(targetRotation, correctRotation);
 		return (angle <= 15f);
 	}
+
+	// bool IsTranslateCorrect(CorrectRotation target)
+	// {
+	// 	Vector3 targetTranslate = target.transform.translate;
+	// }
 
 	void ShowLevelsWindow()
 	{

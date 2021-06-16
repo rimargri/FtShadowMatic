@@ -5,11 +5,6 @@ public class CorrectRotation : MonoBehaviour
 	public Vector3 Euler;
 	public Quaternion Rotation => Quaternion.Euler(Euler);
 
-	void Start()
-	{
-		QualitySettings.SetQualityLevel(5, true); 
-	}
-
 	public Vector3 getRightRotation(GameObject obj)
 	{
 		Vector3 rightRotation = Vector3.zero;
