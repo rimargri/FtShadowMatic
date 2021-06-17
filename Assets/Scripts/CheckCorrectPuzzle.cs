@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System;
 
+
 class CheckCorrectPuzzle : MonoBehaviour
 {
 	public GameObject LevelChoiceWindow;
@@ -26,8 +27,33 @@ class CheckCorrectPuzzle : MonoBehaviour
 	// 	Vector3 targetTranslate = target.transform.translate;
 	// }
 
+	void LoadAnimation()
+	{
+		if (!(SceneManager.GetActiveScene().name == "Menu")) {
+			Debug.Log("Animation");
+			var animObject = GameObject.Find("Animation");
+			var scriptAnimationButton = animObject.GetComponent <AnimationButton> ();
+			scriptAnimationButton.Animate();
+		}
+	}
+
+	void AddDelay()
+	{
+		StartCoroutine(SceneShowDelay());
+	}
+
+	private IEnumerator SceneShowDelay()
+	{
+		Debug.Log(Time.time);
+		yield return new WaitForSeconds(.1f);
+		Debug.Log(Time.time);
+	}
+
 	void ShowLevelsWindow()
 	{
+		// AddDelay();
+		LoadAnimation();
+		Debug.Log("Add Delay");
 		var GameObjLvlUnlock = GameObject.Find("Canvas/LvlManager");
 		var lvlUnlocker = GameObjLvlUnlock.GetComponent <LvlManager> ();
 		lvlUnlocker.SetLevelUnlocked();
@@ -46,9 +72,10 @@ class CheckCorrectPuzzle : MonoBehaviour
 			isComplete = true;
 			if ((SceneManager.GetActiveScene().buildIndex < 3 && PlayerPrefs.GetString("Mode") == "NormalMode") || (PlayerPrefs.GetString("Mode") == "TestMode"))
 			{
-				ShowLevelsWindow();
+				Invoke("ShowLevelsWindow", 3);
+				// ShowLevelsWindow();
 			}
-			else 
+			else
 			{
 				SceneManager.LoadScene("Final Scene");
 			}

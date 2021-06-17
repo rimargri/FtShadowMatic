@@ -25,10 +25,10 @@ public class LvlManager : MonoBehaviour
 
 		mode = PlayerPrefs.GetString("Mode");
 		levelsUnlocked = PlayerPrefs.GetInt("levelsUnlocked", 1);
-		Debug.Log($"Lvl unlocked   {levelsUnlocked}");
+		// Debug.Log($"Lvl unlocked   {levelsUnlocked}");
 		if (mode == "TestMode")
 		{
-			Debug.Log("Test mode");
+			// Debug.Log("Test mode");
 			for (i = 0; i < buttons.Length; i++)
 			{
 				buttons[i].interactable = true;
@@ -36,7 +36,7 @@ public class LvlManager : MonoBehaviour
 		}
 		else if (mode == "NormalMode")
 		{
-			Debug.Log("Normal mode");
+			// Debug.Log("Normal mode");
 			for (i = 0; i < buttons.Length; i++)
 			{
 				buttons[i].interactable = false;
@@ -57,13 +57,6 @@ public class LvlManager : MonoBehaviour
 		{
 			PlayerPrefs.SetInt("levelsUnlocked", currentLevel);
 			PlayerPrefs.Save();
-		}
-
-		if (!(SceneManager.GetActiveScene().name == "Menu")) {
-			Debug.Log("Animation");
-			var animObject = GameObject.Find("Animation");
-			var scriptAnimationButton = animObject.GetComponent <AnimationButton> ();
-			scriptAnimationButton.Animate();
 		}
 		UpdateSelectionLevels();
 	}
