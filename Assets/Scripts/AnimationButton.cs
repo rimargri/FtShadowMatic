@@ -3,24 +3,25 @@ using System.Collections;
 
 public class AnimationButton : MonoBehaviour {
 
-	private Animator _anim;
+	// private Animator _anim;
 
-	void Start() {
-		_anim = GetComponent<Animator>();
-	}
-	public void Update()
-	{
-		// var anim = GetComponent(Animator);
-		var GameObj = GameObject.Find("Canvas/Panel/PRESSButton");
-		var but = GameObj.GetComponent <CheckButtonWasPressed> ();
-		if (but.buttonPressed == true) {
-			_anim.enabled = true;
-		}
-	}
+	// void Start() {
+	// 	_anim = GetComponent<Animator>();
+	// }
+	// public void Update()
+	// {
+	// 	// var anim = GetComponent(Animator);
+	// 	var GameObj = GameObject.Find("Canvas/Panel/PRESSButton");
+	// 	var but = GameObj.GetComponent <CheckButtonWasPressed> ();
+	// 	if (but.buttonPressed == true) {
+	// 		_anim.enabled = true;
+	// 	}
+	// }
 
 	public AnimationCurve Curve;
 	public float Duration;
 	public Transform target;
+	
 	public void Animate()
 	{
 		StartCoroutine("Animation");

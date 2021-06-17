@@ -58,6 +58,13 @@ public class LvlManager : MonoBehaviour
 			PlayerPrefs.SetInt("levelsUnlocked", currentLevel);
 			PlayerPrefs.Save();
 		}
+
+		if (!(SceneManager.GetActiveScene().name == "Menu")) {
+			Debug.Log("Animation");
+			var animObject = GameObject.Find("Animation");
+			var scriptAnimationButton = animObject.GetComponent <AnimationButton> ();
+			scriptAnimationButton.Animate();
+		}
 		UpdateSelectionLevels();
 	}
 }
