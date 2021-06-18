@@ -37,23 +37,21 @@ class CheckCorrectPuzzle : MonoBehaviour
 		}
 	}
 
-	void AddDelay()
-	{
-		StartCoroutine(SceneShowDelay());
-	}
+	// void AddDelay()
+	// {
+	// 	StartCoroutine(SceneShowDelay());
+	// }
 
-	private IEnumerator SceneShowDelay()
-	{
-		Debug.Log(Time.time);
-		yield return new WaitForSeconds(.1f);
-		Debug.Log(Time.time);
-	}
+	// private IEnumerator SceneShowDelay()
+	// {
+	// 	Debug.Log(Time.time);
+	// 	yield return new WaitForSeconds(.1f);
+	// 	Debug.Log(Time.time);
+	// }
 
 	void ShowLevelsWindow()
 	{
-		// AddDelay();
 		LoadAnimation();
-		Debug.Log("Add Delay");
 		var GameObjLvlUnlock = GameObject.Find("Canvas/LvlManager");
 		var lvlUnlocker = GameObjLvlUnlock.GetComponent <LvlManager> ();
 		lvlUnlocker.SetLevelUnlocked();
@@ -70,8 +68,10 @@ class CheckCorrectPuzzle : MonoBehaviour
 		if (!isComplete && targets.TrueForAll((target) => IsRotationCorrect(target)))
 		{
 			isComplete = true;
+			PlayerPrefs.SetInt("completeLvl", 1);
 			if ((SceneManager.GetActiveScene().buildIndex < 3 && PlayerPrefs.GetString("Mode") == "NormalMode") || (PlayerPrefs.GetString("Mode") == "TestMode"))
 			{
+				Debug.Log("Add Delay");
 				Invoke("ShowLevelsWindow", 3);
 				// ShowLevelsWindow();
 			}

@@ -79,7 +79,7 @@ public class Rotator : MonoBehaviour
 	{
 		var pauseMenu = GameObject.Find("Canvas/PauseMenu/Panel");
 		var lvlWindow = GameObject.Find("Canvas/LvlManager/Panel");
-		if (!(pauseMenu.activeSelf) && !(lvlWindow.activeSelf)) {
+		if (!(pauseMenu.activeSelf) && !(lvlWindow.activeSelf) && (PlayerPrefs.GetInt("completeLvl", 0) == 0)) {
 			if (SceneManager.GetActiveScene().name == "Level 1") {
 				rotationLevel1();
 			}
