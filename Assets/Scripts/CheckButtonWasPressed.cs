@@ -4,6 +4,7 @@ using UnityEngine.EventSystems;
 
 public class CheckButtonWasPressed : MonoBehaviour, IPointerDownHandler, IPointerUpHandler {
 	public bool buttonPressed;
+
 	public void OnPointerDown(PointerEventData eventData){
 		buttonPressed = true;
 		Debug.Log("button pressed");

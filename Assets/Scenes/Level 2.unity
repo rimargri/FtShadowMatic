@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.1802837, g: 0.22571404, b: 0.30692273, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2267,7 +2267,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &673323361
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6355,7 +6355,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1472089021
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8025,7 +8025,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 857ff35eb1a225449aa348d9b1d20e06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LevelChoiceWindow: {fileID: 1662272853}
+  NormalModeUI: {fileID: 1472089020}
+  TestModeUI: {fileID: 673323360}
+  Panel: {fileID: 1662272853}
   ButtonPause: {fileID: 287821770}
   Definitions: {fileID: 446896909}
 --- !u!54 &5936682557575744741

@@ -10,7 +10,8 @@ public class Rotator : MonoBehaviour
 	// private float coefficient = 0.03f;
 	private float coefficient = 0.5f;
 
-	public void Start() {
+	public void Start()
+	{
 		targetPosition = transform.position;
 	}
 
@@ -79,7 +80,9 @@ public class Rotator : MonoBehaviour
 	{
 		var pauseMenu = GameObject.Find("Canvas/PauseMenu/Panel");
 		var lvlWindow = GameObject.Find("Canvas/LvlManager/Panel");
+		// Debug.Log($"PlayerPrefs.GetInt(completeLvl, 0) = {PlayerPrefs.GetInt("completeLvl", 0)}");
 		if (!(pauseMenu.activeSelf) && !(lvlWindow.activeSelf) && (PlayerPrefs.GetInt("completeLvl", 0) == 0)) {
+		// if (!(pauseMenu.activeSelf) && !(lvlWindow.activeSelf)) {
 			if (SceneManager.GetActiveScene().name == "Level 1") {
 				rotationLevel1();
 			}

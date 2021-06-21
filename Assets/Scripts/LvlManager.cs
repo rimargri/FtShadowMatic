@@ -12,10 +12,6 @@ public class LvlManager : MonoBehaviour
 
 	void Start()
 	{
-		// mode = PlayerPrefs.GetString("Mode");
-		// Debug.Log("Start LvlManager");
-		// SetLevelUnlocked(); // ???
-		// UpdateSelectionLevels();
 		Debug.Log("Start LvlManager");
 	}
 
@@ -25,10 +21,8 @@ public class LvlManager : MonoBehaviour
 
 		mode = PlayerPrefs.GetString("Mode");
 		levelsUnlocked = PlayerPrefs.GetInt("levelsUnlocked", 1);
-		// Debug.Log($"Lvl unlocked   {levelsUnlocked}");
 		if (mode == "TestMode")
 		{
-			// Debug.Log("Test mode");
 			for (i = 0; i < buttons.Length; i++)
 			{
 				buttons[i].interactable = true;
@@ -36,7 +30,6 @@ public class LvlManager : MonoBehaviour
 		}
 		else if (mode == "NormalMode")
 		{
-			// Debug.Log("Normal mode");
 			for (i = 0; i < buttons.Length; i++)
 			{
 				buttons[i].interactable = false;
