@@ -9,24 +9,29 @@ using System;
 class CheckCorrectPuzzle : MonoBehaviour
 {
 	public LevelUnlocker LevelUnlocker;
-	[Header("Hui")]
-		public GameObject NormalModeUI;
+	[Header("Modes buttons")]
+	public GameObject NormalModeUI;
 	public GameObject TestModeUI;
 
-	[Header("Pizdsa")]
+	[Header("Window select levels")]
 	public GameObject Panel;
 	public GameObject ButtonPause;
 	public GameObject Definitions;
 
+	[Header("Animation IN and OUT")]
 	public Image black;
 	public Animator anim;
 
-	public Button[] buttons;
+	private bool isCompleteLvl = false;
 
-	private bool isComplete = false;
+	private float WaitTime = 3f;
 
-	void Start() {
-		PlayerPrefs.SetInt("completeLvl", 0);
+	private int CountLevels = 3;
+
+	void Start()
+	{
+		isCompleteLvl = false;
+		PlayerPrefs.SetInt("completeLvl", isCompleteLvl == false ? 0 : 1);
 	}
 
 	bool IsRotationCorrect(CorrectRotation target)
@@ -53,83 +58,17 @@ class CheckCorrectPuzzle : MonoBehaviour
 		}
 	}
 
-	// void AddDelay()
-	// {
-	// 	StartCoroutine(SceneShowDelay());
-	// }
-
-	// private IEnumerator SceneShowDelay()
-	// {
-	// 	Debug.Log(Time.time);
-	// 	yield return new WaitForSeconds(.1f);
-	// 	Debug.Log(Time.time);
-	// }
-
-
-	// void CheckTrigger() {
-	// 	if (trigger) {
-	// 		StartCoroutine();
-	// 	}
-	// }
-
 	public void Fade(int nextLevel)
 	{
 		StartCoroutine("Fading", nextLevel);
 	}
 
-	public void ControlsTransitionBtwScenes() {
-		// StartCoroutine(Fading());
-	}
-
-	// bool hasBeenClicked = false;
-	// void ButtonClicked()
-	// {
-	// 	hasBeenClicked = true;
-	// 	anim.SetBool("Fade", true);
-	// }
-
-	IEnumerator Fading(int nextLevel) {
-
+	IEnumerator Fading(int nextLevel)
+	{
 		ShowLevelsWindow();
-
-		// foreach (Button b in buttons)
-		// {
-		// 	b.onClick.AddListener(ButtonClicked);
-		// }
-
-		// while (!hasBeenClicked) yield return null;
-
 		anim.SetBool("Fade", true);
 		yield return new WaitUntil(()=>black.color.a == 1);
-
 		LevelUnlocker.LoadLevel(nextLevel);
-
-		// var Buttons = GameObject.Find("Canvas/LvlManager/Panel/Buttons");
-		// foreach (GameObject button in Buttons)
-		// {
-		// 	var classButton = button.GetComponent <HandlerButton> ();
-		// 	if (classButton.clicked == true) {
-
-		// foreach (Button but in buttons) {
-			// bool hasBeenClicked = false;
-			// while (!hasBeenClicked)
-			// {
-			// 	for (int i = 0; i < buttons.Length; i++) {
-			// 		var but = buttons[i].GetComponent <HandlerButton> ();
-			// 		Debug.Log($"but clicked = {but.clicked}");
-			// 		if (but.clicked == true) {
-			// 			hasBeenClicked = true;
-			// 			anim.SetBool("Fade", true);
-			// 			yield return new WaitUntil(()=>black.color.a == 1);
-			// 		}
-			// 		// else
-			// 		// continue;
-			// 	}
-			// 	yield return null;
-			// }
-
-			// }
-		// }
 	}
 
 	void ShowLevelsWindow()
@@ -157,16 +96,14 @@ class CheckCorrectPuzzle : MonoBehaviour
 		var array = FindObjectsOfType<CorrectRotation>();
 		var targets = new List<CorrectRotation>(array);
 
-		if (!isComplete && targets.TrueForAll((target) => IsRotationCorrect(target)))
+		if (!isCompleteLvl && targets.TrueForAll((target) => IsRotationCorrect(target)))
 		{
-			isComplete = true;
-			PlayerPrefs.SetInt("completeLvl", 1);
-			if ((SceneManager.GetActiveScene().buildIndex < 3 && PlayerPrefs.GetString("Mode") == "NormalMode") || (PlayerPrefs.GetString("Mode") == "TestMode"))
+			isCompleteLvl = true;
+			PlayerPrefs.SetInt("completeLvl", isCompleteLvl == true ? 1 : 0);
+			if ((SceneManager.GetActiveScene().buildIndex < CountLevels && PlayerPrefs.GetString("Mode") == "NormalMode") || (PlayerPrefs.GetString("Mode") == "TestMode"))
 			{
 				Debug.Log("Add Delay");
-				// Invoke("ControlsTransitionBtwScenes", 3);
-				// Invoke("ControlsTransitionBtwScenes", 3);
-				Invoke("ShowLevelsWindow", 3f);
+				Invoke("ShowLevelsWindow", WaitTime);
 			}
 			else
 			{
@@ -175,8 +112,3 @@ class CheckCorrectPuzzle : MonoBehaviour
 		}
     }
 }
-
-
-// 1. В ParentObject есть child - три кнопки. Вопрос: Как правильно их получить?
-// 2. Мне нужно итерироваться по массиву кнопок, чтобы чекать, была ли хоть одна из них нажата.
-// 3. Если была,  включить затемнение экрана.
