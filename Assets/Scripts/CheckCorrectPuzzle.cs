@@ -75,13 +75,15 @@ class CheckCorrectPuzzle : MonoBehaviour
 	{
 		string mode;
 
+		Debug.Log("show lvls window");
 		LoadAnimationButton();
 		var GameObjLvlUnlock = GameObject.Find("Canvas/LvlManager");
 		var lvlUnlocker = GameObjLvlUnlock.GetComponent <LvlManager> ();
 		mode = PlayerPrefs.GetString("Mode");
 		lvlUnlocker.SetLevelUnlocked();
-		ButtonPause.SetActive(false);
 		Definitions.SetActive(false);
+		ButtonPause.SetActive(false);
+		// Debug.Log("Definitions.SetActive(false)");
 		Panel.SetActive(true);
 		if (mode == "NormalMode") {
 			NormalModeUI.SetActive(true);
@@ -102,7 +104,6 @@ class CheckCorrectPuzzle : MonoBehaviour
 			PlayerPrefs.SetInt("completeLvl", isCompleteLvl == true ? 1 : 0);
 			if ((SceneManager.GetActiveScene().buildIndex < CountLevels && PlayerPrefs.GetString("Mode") == "NormalMode") || (PlayerPrefs.GetString("Mode") == "TestMode"))
 			{
-				Debug.Log("Add Delay");
 				Invoke("ShowLevelsWindow", WaitTime);
 			}
 			else

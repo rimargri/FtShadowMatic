@@ -21,7 +21,7 @@ public class PauseEsc : MonoBehaviour
 	{
 		if (Input.GetKeyDown(KeyCode.Escape) || buttonWasPressed)
 		{
-			Debug.Log("update" + buttonWasPressed);
+			// Debug.Log("update" + buttonWasPressed);
 			isPaused = !isPaused;
 		}
 		PauseMenu.SetActive(isPaused);
