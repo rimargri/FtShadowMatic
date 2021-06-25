@@ -9,7 +9,6 @@ public class RaycastObject : MonoBehaviour
 	{
 		if (Input.GetMouseButtonDown(0))
 		{
-			// Debug.Log("Mouse is down");
 			bool hit = Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out var hitInfo);
 			if (hit)
 			{

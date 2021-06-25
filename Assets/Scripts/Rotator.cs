@@ -43,6 +43,7 @@ public class Rotator : MonoBehaviour
 		var obj = Raycaster.Selected.transform;
 		// if (Input.GetKey(KeyCode.Mouse0) && (!(Input.GetKey(KeyCode.LeftControl) && !(Input.GetKey(KeyCode.RightControl))))) {
 		if (Input.GetKey(KeyCode.Mouse0)) {
+			Debug.Log("Rotate now");
 			obj.Rotate(Input.GetAxis("Mouse X") * speedH * Time.deltaTime * coefficient, 0.0f, 0.0f, Space.Self);
 		}
 		if (((Input.GetKey(KeyCode.LeftControl)) || (Input.GetKey(KeyCode.RightControl))) && Input.GetKey(KeyCode.Mouse0)) {

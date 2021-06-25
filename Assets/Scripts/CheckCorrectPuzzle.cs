@@ -91,6 +91,11 @@ class CheckCorrectPuzzle : MonoBehaviour
 		else if (mode == "TestMode") {
 			TestModeUI.SetActive(true);
 		}
+	}	
+
+	void LoadFinalScene()
+	{
+		SceneManager.LoadScene("Final Scene");
 	}
 
     void Update()
@@ -108,7 +113,7 @@ class CheckCorrectPuzzle : MonoBehaviour
 			}
 			else
 			{
-				SceneManager.LoadScene("Final Scene");
+				Invoke("LoadFinalScene", WaitTime);
 			}
 		}
     }
