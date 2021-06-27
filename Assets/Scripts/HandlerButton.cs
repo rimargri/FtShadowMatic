@@ -14,13 +14,3 @@ class HandlerButton : MonoBehaviour
 		clicked = true;
 	}
 }
-
-// if isComplete && level == 3
-// 	Invoke("Transition", 3)
-
-// Transition():
-// 	for (buttons):
-// 		if (button.isClicked)
-// 			WaitUntil(color.a == 1f)
-
-// Animator:

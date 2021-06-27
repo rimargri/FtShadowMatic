@@ -5,7 +5,6 @@ public class ClearLevelMenu : MonoBehaviour
 {
 	public void ClearPlayerPrefs()
 	{
-		// PlayerPrefs.DeleteAll();
 		PlayerPrefs.DeleteKey("levelsUnlocked");
 		PlayerPrefs.SetInt("levelsUnlocked", 1);
 		Debug.Log("Clear all prefs");

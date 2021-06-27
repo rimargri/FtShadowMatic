@@ -49,13 +49,6 @@ public class Rotator : MonoBehaviour
 			if (((Input.GetKey(KeyCode.LeftControl)) || (Input.GetKey(KeyCode.RightControl))) && Input.GetKey(KeyCode.Mouse0)) {
 				obj.Rotate(0.0f, Input.GetAxis("Mouse Y") * speedV * Time.deltaTime * (-1) * coefficient4Rotate, 0.0f, Space.Self);
 			}
-
-			// if ((Input.GetKey((KeyCode.LeftArrow)) || (Input.GetKey(KeyCode.A))) && Input.GetKey(KeyCode.Mouse0)) {
-			// 	obj.Translate(new Vector3 (0f, 0f, 10f) * Time.deltaTime * coefficient4Translate, Space.World);
-			// }
-			// else if ((Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)) && Input.GetKey(KeyCode.Mouse0)) {
-			// 	obj.Translate(new Vector3 (0f, 0f, -10f) * Time.deltaTime * coefficient4Translate, Space.World);
-			// }
 			else if ((Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W)) && Input.GetKey(KeyCode.Mouse0)) {
 				obj.Translate(new Vector3 (10f, 0f, 0f) * Time.deltaTime * coefficient4Translate, Space.World);
 			}

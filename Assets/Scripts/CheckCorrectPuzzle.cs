@@ -112,9 +112,9 @@ class CheckCorrectPuzzle : MonoBehaviour
 
 		if (!isCompleteLvl && targets.TrueForAll((target) => IsRotationCorrect(target)))
 		{
-			if (SceneManager.GetActiveScene().buildIndex == Level3 && targets2.TrueForAll((target) => IsPositionCorrect(target)))
+			if ((SceneManager.GetActiveScene().buildIndex != Level3) ||
+				(SceneManager.GetActiveScene().buildIndex == Level3 && targets2.TrueForAll((target) => IsPositionCorrect(target))))
 			{
-
 				isCompleteLvl = true;
 				PlayerPrefs.SetInt("completeLvl", isCompleteLvl == true ? 1 : 0);
 				if ((SceneManager.GetActiveScene().buildIndex < CountLevels && PlayerPrefs.GetString("Mode") == "NormalMode") || (PlayerPrefs.GetString("Mode") == "TestMode"))
@@ -125,9 +125,7 @@ class CheckCorrectPuzzle : MonoBehaviour
 				{
 					Invoke("LoadFinalScene", WaitTime);
 				}
-			
 			}
-
 		}
     }
 }

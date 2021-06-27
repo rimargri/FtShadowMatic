@@ -28,48 +28,16 @@ class ShowSelectionLvl : MonoBehaviour
 		}
 	}
 
-	// void AddDelay()
-	// {
-	// 	StartCoroutine(SceneShowDelay());
-	// }
-
-	// private IEnumerator SceneShowDelay()
-	// {
-	// 	Debug.Log(Time.time);
-	// 	yield return new WaitForSeconds(.1f);
-	// 	Debug.Log(Time.time);
-	// }
-
-
-	// void CheckTrigger() {
-	// 	if (trigger) {
-	// 		StartCoroutine();
-	// 	}
-	// }
-
 	public void StartingCourutine() {
 		StartCoroutine(Fading());
 	}
 
-	// {
-	// 	parentObject = GameObject.Find("Parent");// The name of the parent object
-	// 	childObject = parentObject.transform.GetChild(0).gameObject; // the parent index (starting from 0)
-	// }
 
 	IEnumerator Fading() {
 		anim.SetBool("Fade", true);
 		ShowLevelsWindow();
 		var parentObject = GameObject.Find("Canvas/LvlManager/Panel/Buttons");
-		Debug.Log("Child obj count" + parentObject.transform.childCount);
-		// foreach (GameObject but in parentObject)
-		// {
-		// 	childObject = parentObject.transform.GetChild(0).gameObject;
-		// 	var classButton = but.GetComponent <HandlerButton> ();
-		// 	if (classButton.clicked == true) {
-				// yield return new WaitUntil(()=>black.color.a == 1);
-				yield return null;
-		// 	}
-		// }
+		yield return null;
 	}
 
 	void ShowLevelsWindow()
