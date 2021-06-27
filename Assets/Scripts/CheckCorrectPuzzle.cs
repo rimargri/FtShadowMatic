@@ -43,15 +43,19 @@ class CheckCorrectPuzzle : MonoBehaviour
 		return (angle <= 15f);
 	}
 
-	// bool IsTranslateCorrect(CorrectRotation target)
-	// {
-	// 	Vector3 targetTranslate = target.transform.translate;
-	// }
+	bool IsPositionCorrect(CorrectPos target)
+	{
+		Vector3 targetPosition = target.transform.position;
+		Vector3 correctPos = target.GetCorrectPosition();
+
+		float dist = Vector3.Distance(correctPos, targetPosition);
+		print("Distance to other: " + dist);
+		return (dist <= 0.02672781f);
+	}
 
 	void LoadAnimationButton()
 	{
 		if (!(SceneManager.GetActiveScene().name == "Menu")) {
-			Debug.Log("Animation");
 			var animObject = GameObject.Find("Animation");
 			var classAnimationButton = animObject.GetComponent <AnimationButton> ();
 			classAnimationButton.Animate();
@@ -75,7 +79,6 @@ class CheckCorrectPuzzle : MonoBehaviour
 	{
 		string mode;
 
-		Debug.Log("show lvls window");
 		LoadAnimationButton();
 		var GameObjLvlUnlock = GameObject.Find("Canvas/LvlManager");
 		var lvlUnlocker = GameObjLvlUnlock.GetComponent <LvlManager> ();
@@ -83,7 +86,6 @@ class CheckCorrectPuzzle : MonoBehaviour
 		lvlUnlocker.SetLevelUnlocked();
 		Definitions.SetActive(false);
 		ButtonPause.SetActive(false);
-		// Debug.Log("Definitions.SetActive(false)");
 		Panel.SetActive(true);
 		if (mode == "NormalMode") {
 			NormalModeUI.SetActive(true);
@@ -103,18 +105,29 @@ class CheckCorrectPuzzle : MonoBehaviour
 		var array = FindObjectsOfType<CorrectRotation>();
 		var targets = new List<CorrectRotation>(array);
 
+		var array2 = FindObjectsOfType<CorrectPos>();
+		var targets2 = new List<CorrectPos>(array2);
+
+		int Level3 = 3;
+
 		if (!isCompleteLvl && targets.TrueForAll((target) => IsRotationCorrect(target)))
 		{
-			isCompleteLvl = true;
-			PlayerPrefs.SetInt("completeLvl", isCompleteLvl == true ? 1 : 0);
-			if ((SceneManager.GetActiveScene().buildIndex < CountLevels && PlayerPrefs.GetString("Mode") == "NormalMode") || (PlayerPrefs.GetString("Mode") == "TestMode"))
+			if (SceneManager.GetActiveScene().buildIndex == Level3 && targets2.TrueForAll((target) => IsPositionCorrect(target)))
 			{
-				Invoke("ShowLevelsWindow", WaitTime);
+
+				isCompleteLvl = true;
+				PlayerPrefs.SetInt("completeLvl", isCompleteLvl == true ? 1 : 0);
+				if ((SceneManager.GetActiveScene().buildIndex < CountLevels && PlayerPrefs.GetString("Mode") == "NormalMode") || (PlayerPrefs.GetString("Mode") == "TestMode"))
+				{
+					Invoke("ShowLevelsWindow", WaitTime);
+				}
+				else
+				{
+					Invoke("LoadFinalScene", WaitTime);
+				}
+			
 			}
-			else
-			{
-				Invoke("LoadFinalScene", WaitTime);
-			}
+
 		}
     }
 }

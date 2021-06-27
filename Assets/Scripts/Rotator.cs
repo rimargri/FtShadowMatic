@@ -7,8 +7,7 @@ public class Rotator : MonoBehaviour
 	public float speedMovement = 20.0f;
 	public RaycastObject Raycaster;
 	Vector3 targetPosition;
-	// private float coefficient = 0.03f;
-	private float coefficient4Rotate = 0.05f;
+	private float coefficient4Rotate = 0.0105f;
 	private float coefficient4Translate = 0.0035f;
 
 	public void Start()
@@ -29,7 +28,6 @@ public class Rotator : MonoBehaviour
 	{
 		if (Raycaster.Selected == null) return;
 		var obj = Raycaster.Selected.transform;
-		// if (Input.GetKey(KeyCode.Mouse0) && (!(Input.GetKey(KeyCode.LeftControl) || !(Input.GetKey(KeyCode.RightControl))))) {
 		if (Input.GetKey(KeyCode.Mouse0)) {
 			obj.Rotate(Input.GetAxis("Mouse X") * speedH * Time.deltaTime * coefficient4Rotate, 0.0f, 0.0f, Space.World);
 		}
@@ -38,53 +36,40 @@ public class Rotator : MonoBehaviour
 		}
 	}
 
+
 	void rotationLevel3()
 	{
 		if (Raycaster.Selected == null) return;
-		var obj = Raycaster.Selected.transform;
-		// if (Input.GetKey(KeyCode.Mouse0) && (!(Input.GetKey(KeyCode.LeftControl) && !(Input.GetKey(KeyCode.RightControl))))) {
-		if (Input.GetKey(KeyCode.Mouse0)) {
-			Debug.Log("Rotate now");
-			obj.Rotate(Input.GetAxis("Mouse X") * speedH * Time.deltaTime * coefficient4Rotate, 0.0f, 0.0f, Space.Self);
-		}
-		if (((Input.GetKey(KeyCode.LeftControl)) || (Input.GetKey(KeyCode.RightControl))) && Input.GetKey(KeyCode.Mouse0)) {
-			obj.Rotate(0.0f, Input.GetAxis("Mouse Y") * speedV * Time.deltaTime * (-1) * coefficient4Rotate, 0.0f, Space.Self);
-		}
+		if (Raycaster.Selected.name != "globe-earth")
+		{
+			var obj = Raycaster.Selected.transform;
+			if (Input.GetKey(KeyCode.Mouse0)) {
+				obj.Rotate(Input.GetAxis("Mouse X") * speedH * Time.deltaTime * coefficient4Rotate, 0.0f, 0.0f, Space.Self);
+			}
+			if (((Input.GetKey(KeyCode.LeftControl)) || (Input.GetKey(KeyCode.RightControl))) && Input.GetKey(KeyCode.Mouse0)) {
+				obj.Rotate(0.0f, Input.GetAxis("Mouse Y") * speedV * Time.deltaTime * (-1) * coefficient4Rotate, 0.0f, Space.Self);
+			}
 
-
-		if ((Input.GetKey((KeyCode.LeftArrow)) || (Input.GetKey(KeyCode.A))) && Input.GetKey(KeyCode.Mouse0)) {
-			obj.Translate(new Vector3 (0f, 0f, -10f) * Time.deltaTime * coefficient4Translate, Space.World);
+			// if ((Input.GetKey((KeyCode.LeftArrow)) || (Input.GetKey(KeyCode.A))) && Input.GetKey(KeyCode.Mouse0)) {
+			// 	obj.Translate(new Vector3 (0f, 0f, 10f) * Time.deltaTime * coefficient4Translate, Space.World);
+			// }
+			// else if ((Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)) && Input.GetKey(KeyCode.Mouse0)) {
+			// 	obj.Translate(new Vector3 (0f, 0f, -10f) * Time.deltaTime * coefficient4Translate, Space.World);
+			// }
+			else if ((Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W)) && Input.GetKey(KeyCode.Mouse0)) {
+				obj.Translate(new Vector3 (10f, 0f, 0f) * Time.deltaTime * coefficient4Translate, Space.World);
+			}
+			else if ((Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S)) && Input.GetKey(KeyCode.Mouse0)) {
+				obj.Translate(new Vector3 (-10f, 0f, 0f) * Time.deltaTime * coefficient4Translate, Space.World);
+			}
 		}
-		else if ((Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)) && Input.GetKey(KeyCode.Mouse0)) {
-			obj.Translate(new Vector3 (0f, 0f, 10f) * Time.deltaTime * coefficient4Translate, Space.World);
-		}
-		else if ((Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W)) && Input.GetKey(KeyCode.Mouse0)) {
-			obj.Translate(new Vector3 (-10f, 0f, 0f) * Time.deltaTime * coefficient4Translate, Space.World);
-		}
-		else if ((Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S)) && Input.GetKey(KeyCode.Mouse0)) {
-			obj.Translate(new Vector3 (10f, 0f, 0f) * Time.deltaTime * coefficient4Translate, Space.World);
-		}
-
-	 
-		// if (Input.GetMouseButtonDown(0)) {
-		// // if (Input.GetKey(KeyCode.Mouse0)) {
-		// 	Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-		// 	RaycastHit hit;
-
-		// 	if (Physics.Raycast(ray, out hit)) {
-		// 		targetPosition = hit.point;
-		// 		obj.transform.position = targetPosition;
-		// 	}
-		// }
 	}
 
 	void Update()
 	{
 		var pauseMenu = GameObject.Find("Canvas/PauseMenu/Panel");
 		var lvlWindow = GameObject.Find("Canvas/LvlManager/Panel");
-		// Debug.Log($"PlayerPrefs.GetInt(completeLvl, 0) = {PlayerPrefs.GetInt("completeLvl", 0)}");
 		if (!(pauseMenu.activeSelf) && !(lvlWindow.activeSelf) && (PlayerPrefs.GetInt("completeLvl", 0) == 0)) {
-		// if (!(pauseMenu.activeSelf) && !(lvlWindow.activeSelf)) {
 			if (SceneManager.GetActiveScene().name == "Level 1") {
 				rotationLevel1();
 			}
