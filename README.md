@@ -53,3 +53,7 @@ In The Shadows
 Также в игре предусмотрены минимальные настройки: можно регулировать громкость музыки, играющей на фоне на протяжении всей игры, а также качество картинки, которую видит пользователь:
 
 !(Меню "Настройки")[]
+
+https://github.com/{username}/{repository}/raw/{branch}/{path}/image.png
+
+https://github.com/rimargri/FtShadowMatic/raw/main/Screenshots/.png
