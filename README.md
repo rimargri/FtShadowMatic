@@ -2,25 +2,25 @@ In The Shadows
 
 Небольшая игра, в которой нужно повернуть дающуюся фигурку так, чтобы на стене отобразилась тень, похожая на какой-либо объект.
 
-!(Меню)[]
+!(Меню)[https://github.com/rimargri/FtShadowMatic/raw/main/Screenshots/Menu.png]
 
 Есть возможность выбрать режим игры: тестовый или обычный.
  
 В тестовом режиме доступны все три уровня игры.
 
-!(Тестовый режим)[]
+!(Тестовый режим)[https://github.com/rimargri/FtShadowMatic/raw/main/Screenshots/TestModeSelectLevel.png]
 
 В обычном режиме пользователь может выбрать, начать игру сначала или продолжить с последнего доступного ему уровня.
 
-!(Обычный режим)[]
+!(Обычный режим)[https://github.com/rimargri/FtShadowMatic/raw/main/Screenshots/NormalMode.png]
 
 Если пользователь выбирает "Начать сначала", то ему доступен только первый уровень. Каждый следующий уровень становится доступен после прохождения предыдущего.
 
-!(Обычный режим: начать сначала)[]
+!(Обычный режим: начать сначала)[https://github.com/rimargri/FtShadowMatic/raw/main/Screenshots/NormalModeStartOver.png]
 
 Если пользователь выбирает "Продолжить игру", ему доступен последний открытый им уровень и все уровни до него, которые он прошёл.
 
-!(Обычный режим: продолжить игру)[]
+!(Обычный режим: продолжить игру)[https://github.com/rimargri/FtShadowMatic/raw/main/Screenshots/NormalModeContinuePlay.png]
 
 Сцены в уровнях собраны собственноручно. Модели, содержащиеся в сценах, были взяты из Интернета.
 
@@ -28,32 +28,28 @@ In The Shadows
 
 Подразумевается, что пользователь немного покрутит фигурку и поймёт, какая тень у него должна получиться.
 
-!(1 уровень: первоначальное состояние)[]
+!(1 уровень: первоначальное состояние)[https://github.com/rimargri/FtShadowMatic/raw/main/Screenshots/Level1Start.png]
 
-!(1 уровень: финальное состояние)[]
+!(1 уровень: финальное состояние)[https://github.com/rimargri/FtShadowMatic/raw/main/Screenshots/Level1Finish.png]
 
 Правильно повёрнутая фигурка во втором уровне выглядит так:
 
-!(2 уровень)[]
+!(2 уровень)[https://github.com/rimargri/FtShadowMatic/raw/main/Screenshots/Level2Finish.png]
 
 А в третьем — вот так:
 
-!(3 уровень)[]
+!(3 уровень)[https://github.com/rimargri/FtShadowMatic/raw/main/Screenshots/Level3Finish.png]
 
 Игру можно поставить на паузу. Для этого нужно нажать Esc на клавиатуре или кнопку "Пауза", находящуюся в верхнем правом игру экрана.
 
-!(Меню "Пауза")[]
+!(Меню "Пауза")[https://github.com/rimargri/FtShadowMatic/raw/main/Screenshots/MenuPause.png]
 
 Переход между сценами осуществляется через Transition. После прохождения уровня появляется меню, в котором следующий уровень становится доступным для прохождения - это сделано с использованием анимации; также данное меню предполлагает возможность возвращения в главное меню.
 
-!(Меню "Уровень пройден")[]
+!(Меню "Уровень пройден")[https://github.com/rimargri/FtShadowMatic/raw/main/Screenshots/MenuLevelComplited.png]
 
 Прогресс пользователя сохраняется после выхода из игры. Поэтому, пройдя какое-то количество уровней и закрыв игру, пользователь может вернуться в неё через некоторое время и продолжить с того места, на котором остановился.
 
 Также в игре предусмотрены минимальные настройки: можно регулировать громкость музыки, играющей на фоне на протяжении всей игры, а также качество картинки, которую видит пользователь:
 
-!(Меню "Настройки")[]
-
-https://github.com/{username}/{repository}/raw/{branch}/{path}/image.png
-
-https://github.com/rimargri/FtShadowMatic/raw/main/Screenshots/.png
+!(Меню "Настройки")[https://github.com/rimargri/FtShadowMatic/raw/main/Screenshots/MenuSettings.png]
